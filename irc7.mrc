@@ -121,7 +121,7 @@ on 1:sockopen:irc7.update:{
     return
   }
   write -c $qt($scriptdirtmp.bin)
-  sockwrite $sockname GET /MSNLD/irc7-mSL/irc7.mrc HTTP/1.0 $+ $crlf
+  sockwrite $sockname GET /MSNLD/irc7-mSL/main/irc7.mrc HTTP/1.0 $+ $crlf
   sockwrite $sockname HOST: raw.githubusercontent.com $+ $crlf $+ $crlf
 }
 
