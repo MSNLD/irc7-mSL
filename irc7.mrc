@@ -160,9 +160,14 @@ on 1:sockclose:irc7.update:{
   else {
     if ($md5($scriptdirtmp.bin,2) === $md5($script,2)) echo $color(info) * No new updates found
     else {
+      var %fn $qt($scriptdirirc7.mrc)
       echo $color(info) -st * New update successfully installed!
-      .rename -fo $qt($scriptdirtmp.bin) $qt($script)
-      .load -rs1 $qt($script)
+      .rename -fo $qt($scriptdirtmp.bin) %fn
+      .load -rs %fn
+      if ($qt($script) != %fn) {
+        .remove $qt($script)
+        .unload -rs $qt($script)
+      }
     }
   }
 }
